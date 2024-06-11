@@ -46,6 +46,7 @@ button{
 }
 
 .flex-item {
-    background-color: rgb(216, 2, 2);
+    background-color: rgb(189, 189, 189);
+    box-sizing: border-box;
     border: 1px solid #000000;
   }

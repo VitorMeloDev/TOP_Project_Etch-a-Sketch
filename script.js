@@ -4,7 +4,7 @@ const inputDisplay = document.querySelector("#input-grid-size")
 // essa função está causando problema. Com numeros pequenos ele funciona bem, mas se o numero de rows for 100, ele demora muito e até trava
 
 let rows = 16;
-let size = 58;
+let size = 60;
 btnChangeDisplay.addEventListener('click', RecreateElements);
 
 function CreateElementsOnDisplay()
@@ -13,10 +13,9 @@ function CreateElementsOnDisplay()
 
     for (let i = 0; i < rows*rows; i++) {
         const item = document.createElement('div');
+        item.classList.add('flex-item');
         item.style.width = `${size}px`;
         item.style.height = `${size}px`;
-        item.style.backgroundColor = 'rgb(255,255,255)'
-        item.style.border =  "1px solid #000000";
         item.addEventListener('mouseenter', ItemColorChange);
         displayContainer.appendChild(item);
         console.log(i);
@@ -25,7 +24,7 @@ function CreateElementsOnDisplay()
 
 function ItemSizeWidthHeight()
 {
-    size = (displayContainer.clientWidth / rows) - 2;
+    size = (displayContainer.clientWidth / rows);
     return `${size}px`;
 }
 
