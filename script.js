@@ -18,7 +18,6 @@ function CreateElementsOnDisplay()
         item.style.height = `${size}px`;
         item.addEventListener('mouseenter', ItemColorChange);
         displayContainer.appendChild(item);
-        console.log(i);
     }
 }
 
@@ -33,7 +32,6 @@ function ClearDisplay()
     while(displayContainer.firstChild){
         displayContainer.removeChild(displayContainer.firstChild);
     }
-    console.log("Display limpo");
 }
 
 //Estou tentando colocar um novo valor na cor, mas não consigo. O debug aparece no browser
