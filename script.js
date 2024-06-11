@@ -1,8 +1,10 @@
 const displayContainer = document.querySelector(".container");
 const btnChangeDisplay = document.querySelector("#btnDisplay");
 const inputDisplay = document.querySelector("#input-grid-size")
+// essa função está causando problema. Com numeros pequenos ele funciona bem, mas se o numero de rows for 100, ele demora muito e até trava
 
 let rows = 16;
+let size = 58;
 btnChangeDisplay.addEventListener('click', RecreateElements);
 
 function CreateElementsOnDisplay()
@@ -11,22 +13,19 @@ function CreateElementsOnDisplay()
 
     for (let i = 0; i < rows*rows; i++) {
         const item = document.createElement('div');
-        item.classList.add('flex-item');
-
-        item.style.width = ItemSizeWidthHeight();
-        item.style.height = ItemSizeWidthHeight();
+        item.style.width = `${size}px`;
+        item.style.height = `${size}px`;
         item.style.backgroundColor = 'rgb(255,255,255)'
+        item.style.border =  "1px solid #000000";
         item.addEventListener('mouseenter', ItemColorChange);
-
         displayContainer.appendChild(item);
+        console.log(i);
     }
-    console.log("Criados");
-
 }
 
 function ItemSizeWidthHeight()
 {
-    const size = displayContainer.clientWidth / rows - 2;
+    size = (displayContainer.clientWidth / rows) - 2;
     return `${size}px`;
 }
 
@@ -45,9 +44,6 @@ function ItemColorChange(event)
     const r = Math.floor(Math.random() * (255 - 0)) + 0;
     const g = Math.floor(Math.random() * (255 - 0)) + 0;
     const b = Math.floor(Math.random() * (255 - 0)) + 0;
-
-    console.log(`rgb(${r},${g},${b})`);
-
     event.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 }
 
@@ -56,6 +52,7 @@ function RecreateElements(event){
     
     if(value > 0 && value <= 100){
         rows = value;
+        ItemSizeWidthHeight();
         CreateElementsOnDisplay();
     }else{
         alert("Please choose a value between 1 and 100!")

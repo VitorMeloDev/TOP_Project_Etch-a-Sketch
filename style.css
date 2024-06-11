@@ -16,6 +16,7 @@ body {
     flex-wrap: wrap;
     height: 960px;
     width: 960px;
+    margin: auto;
 }
 
 .config-container{
